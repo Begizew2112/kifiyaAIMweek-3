@@ -44,7 +44,7 @@ def save_data_to_csv(data, filename='insurance_data.csv'):
     os.makedirs(save_path, exist_ok=True)  # Create folder if it doesn't exist
     data.to_csv(os.path.join(save_path, filename), index=False)
 
-def ab_test(data):
+def preprocessing_script(data):
     """Perform A/B testing using Chi-squared test for provinces."""
     contingency_table = pd.crosstab(data['Province'], data['Claimed'])
     chi2, p, dof, expected = chi2_contingency(contingency_table)
@@ -75,27 +75,27 @@ def save_insurance_data_to_csv(text_file_path, csv_file_name='insurance_text_dat
 
     print(f"Data saved to {csv_file_path}")
 
-# Example usage:
-if __name__ == "__main__":
-    # Define the text file path
-    text_file_path = r'C:\Users\Yibabe\Downloads\MachineLearningRating_v3.txt'
+# # Example usage:
+# if __name__ == "__main__":
+#     # Define the text file path
+#     text_file_path = r'C:\Users\Yibabe\Downloads\MachineLearningRating_v3.txt'
     
-    # Save the insurance data from the text file to a CSV
-    save_insurance_data_to_csv(text_file_path)
+#     # Save the insurance data from the text file to a CSV
+#     save_insurance_data_to_csv(text_file_path)
     
-    # Generate the data
-    insurance_data = generate_insurance_data()
+#     # Generate the data
+#     insurance_data = generate_insurance_data()
 
-    # Save the generated data
-    save_data_to_csv(insurance_data)
+#     # Save the generated data
+#     save_data_to_csv(insurance_data)
 
-    # Run the A/B test for provinces
-    chi2_stat, p_value, contingency_table = ab_test(insurance_data)
-    print("Chi-squared Statistic:", chi2_stat)
-    print("P-value (Provinces):", p_value)
-    print("Contingency Table (Provinces):\n", contingency_table)
+#     # Run the A/B test for provinces
+#     chi2_stat, p_value, contingency_table = ab_test(insurance_data)
+#     print("Chi-squared Statistic:", chi2_stat)
+#     print("P-value (Provinces):", p_value)
+#     print("Contingency Table (Provinces):\n", contingency_table)
 
-    # Run gender analysis
-    t_stat, gender_p_value = gender_analysis(insurance_data)
-    print("T-statistic (Gender):", t_stat)
-    print("P-value (Gender):", gender_p_value)
+#     # Run gender analysis
+#     t_stat, gender_p_value = gender_analysis(insurance_data)
+#     print("T-statistic (Gender):", t_stat)
+#     print("P-value (Gender):", gender_p_value)
